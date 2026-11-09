@@ -1,0 +1,5 @@
+scenario,crew_cost,lost_revenue,peak_seasonal
+base,944700.0,0.0,8.0
+ridership -20%,746100.0,0.0,5.0
+ridership +20%,1203600.0,80074.13477777339,8.0
+e-bike trips +30%,989400.0,0.0,8.0

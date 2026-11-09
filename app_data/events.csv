@@ -1,0 +1,11 @@
+name,date,city,expected_crowd,city_group
+Boston Marathon 2024,2024-04-15,Boston,500000,Boston
+Boston Marathon 2025,2025-04-21,Boston,0,Boston
+Boston Marathon 2026,2026-04-20,Boston,0,Boston
+Head of the Charles Regatta 2024,2024-10-19,Boston,200000,Boston
+Head of the Charles Regatta 2024,2024-10-20,Cambridge,200000,Cambridge
+Head of the Charles Regatta 2025,2025-10-18,Boston,0,Boston
+Head of the Charles Regatta 2025,2025-10-19,Cambridge,0,Cambridge
+College move-in,2024-09-01,Boston,0,Boston
+College move-in,2024-09-01,Cambridge,0,Cambridge
+College move-in,2024-09-01,Somerville,0,Somerville
