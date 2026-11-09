@@ -21,10 +21,27 @@ def capacity_per_crew(year, month):
     return 120 * 6 * calendar.monthrange(year, month)[1] / 7
 
 
+import glob
+
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def find_data_file(name):
+    """Look for app_data/<name> next to app.py, in the working directory, or anywhere in the repo."""
+    candidates = [os.path.join(APP_DIR, "app_data", name), os.path.join(os.getcwd(), "app_data", name)]
+    candidates += glob.glob(os.path.join(os.getcwd(), "**", "app_data", name), recursive=True)
+    candidates += glob.glob(os.path.join(APP_DIR, "**", name), recursive=True)
+    return next((c for c in candidates if os.path.exists(c)), None)
+
+
 @st.cache_data
+def read_csv_cached(path):
+    return pd.read_csv(path)
+
+
 def load(name):
-    path = os.path.join("app_data", name)
-    return pd.read_csv(path) if os.path.exists(path) else None
+    path = find_data_file(name)
+    return read_csv_cached(path) if path else None
 
 
 plan = load("plan.csv")
@@ -36,7 +53,11 @@ st.title("🚲 Bluebikes Crew Planner")
 st.caption("How many full-time and seasonal rebalancing crews each city needs in 2026, built from real Bluebikes trips.")
 
 if plan is None:
-    st.error("No data found. Run the notebook's export cell to create app_data/plan.csv, then reload.")
+    st.error("No data found: plan.csv is missing. Put plan.csv, backtest.csv, events.csv and sensitivity.csv "
+             "in a folder named app_data next to app.py, then reboot the app.")
+    with st.expander("Files the app can see (for debugging)"):
+        st.code("\n".join(sorted(os.path.relpath(p, os.getcwd()) for p in glob.glob(os.path.join(os.getcwd(), "**", "*"), recursive=True)
+                                 if not os.path.isdir(p))[:200]) or "(none)")
     st.stop()
 
 # ---------- Headline numbers ----------
