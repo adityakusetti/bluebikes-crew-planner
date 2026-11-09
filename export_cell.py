@@ -1,0 +1,7 @@
+# Export results for the Streamlit app (run at the end of the notebook)
+os.makedirs("app_data", exist_ok=True)
+plan.to_csv("app_data/plan.csv", index=False)
+bt.to_csv("app_data/backtest.csv", index=False)
+events.to_csv("app_data/events.csv", index=False)
+sens.reset_index().rename(columns={"index": "scenario"}).to_csv("app_data/sensitivity.csv", index=False)
+print("Saved:", os.listdir("app_data"))

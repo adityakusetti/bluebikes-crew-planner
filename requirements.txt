@@ -1,6 +1,5 @@
+streamlit
 pandas
-numpy
 matplotlib
-requests
 pydantic
 langchain-openai
