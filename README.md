@@ -46,15 +46,16 @@ flowchart LR
 | `Bluebikes_Crew_Planner.ipynb` | Full pipeline, with every cell run and outputs visible |
 | `requirements.txt` | Python dependencies |
 | `README.md` | This file |
-| `.gitignore` | Keeps `data/` and `.env` (API key) out of the repo |
+| `app.py` | Streamlit app with the crew plan, backtest, sensitivity, events, and the assistant |
+| `app_data/` | Result tables exported from the notebook for the app |
+| `.gitignore` | Keeps `data/`, `.env`, and `.streamlit/secrets.toml` (API key) out of the repo |
 
 ## Team contributions
 | Member | Contributions |
 |---|---|
-| [Name] | [e.g., data loading, station-hour flows, rebalancing simulation] |
-| [Name] | [e.g., LLM event extraction, operations assistant] |
-| [Name] | [e.g., crew plan, cost model, sensitivity analysis] |
-| [Name] | [e.g., backtest, report, README, demo video] |
+| Aditya Sai Kumar Kusetti | Data pipeline (trip downloads, station-hour flows, station matching), rebalancing simulation, crew plan and cost model, Streamlit app, demo video |
+| Hemanth Mareedu | GenAI event pipeline: collecting event text, LLM event extraction with structured output, event uplift analysis, operations assistant testing |
+| Hemanth Rajaboyina | Backtest against January–September 2026, sensitivity analysis, analysis report, README |
 
 ## AI use
 We used Claude to draft starter code for the notebook and to help structure this README and the report. The team reviewed, ran, tested, and edited all of it, and the notebook's first cell marks the AI-assisted code. Inside the product, an OpenAI model (via LangChain) extracts events with structured output and powers the tool-calling assistant; all numbers come from our code, not the model.
